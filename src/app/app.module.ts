@@ -5,10 +5,12 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { loadingSpinnerComponent } from './Loading Spinner/loading-spinner.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    loadingSpinnerComponent,
   ],
   imports: [
     BrowserModule,

@@ -12,6 +12,7 @@ import { map } from 'rxjs/operators';
 export class AppComponent {
   title = 'basic-angular-http-request-exercises';
   posts: {title: string, genre: string}[] = [];
+  isLoading = false;
 
   constructor (private http: HttpClient){
 
@@ -19,6 +20,7 @@ export class AppComponent {
 
   onCreateMovie(form: NgForm) {
     const {title, genre} = form.value
+    this.isLoading = true;
     this.http.post(
       'https://movies-project-833c7-default-rtdb.firebaseio.com/movies.json',
       {title, genre})
@@ -27,6 +29,7 @@ export class AppComponent {
       })
 
     console.log(title, genre);
+    this.isLoading = false;
 
   }
 
@@ -45,7 +48,11 @@ export class AppComponent {
         console.log(posts);
         this.posts = posts
       })
+  }
 
-
+  onClearMovies() {
+    this.http.delete(
+      'https://movies-project-833c7-default-rtdb.firebaseio.com/movies.json',
+      )
   }
 }
