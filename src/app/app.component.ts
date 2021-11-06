@@ -54,5 +54,13 @@ export class AppComponent {
     this.http.delete(
       'https://movies-project-833c7-default-rtdb.firebaseio.com/movies.json',
       )
+      .subscribe(
+        (res) => {
+          console.log(res);
+        },
+        (error) => {
+          console.log(error);
+        }
+      )
   }
 }
